@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import InfoIcon from "./InfoIcon"
 
 const CourseItem = ({ code, courseName, credits, requirements }) => {

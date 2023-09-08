@@ -4,9 +4,9 @@ import { courses } from "./data/courses"
 
 function App() {
   return (
-    <div className="min-h-screen bg-[#121212] font-inter text-gray-300">
+    <div className="font-inter bg-[#121212] text-gray-300">
       <Header />
-      <main className="container m-auto py-2 text-xs">
+      <main>
         <CourseList courses={courses} />
       </main>
     </div>

@@ -28,7 +28,7 @@ const CourseItemTest = ({
 
   const nextRequirementStyles = `bg-[rgba(255,255,255,0.8)] text-[#121212] transition-all duration-300 ease-in-out`
 
-  const className = `inline-block w-32 rounded border border-white bg-[#202020] p-2 ${
+  const className = `inline-block w-32 rounded border border-white bg-[#202020] p-2 hover:border-opacity-100 ${
     isPrevRequirement
       ? prevRequirementStyle
       : isNextRequirement

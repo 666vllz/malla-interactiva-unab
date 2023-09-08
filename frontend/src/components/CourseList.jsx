@@ -1,6 +1,10 @@
+import { useState } from "react"
 import CourseItemTest from "./CourseItemTest"
 
 const CourseList = ({ courses }) => {
+  const [hoveredCourseRequirements, setHoveredCourseRequirements] = useState([])
+  const [hoveredCourseCode, setHoveredCourseCode] = useState(null)
+
   return (
     <div className="container flex gap-2 overflow-x-scroll text-xs">
       {courses.map((semester, index) => (
@@ -15,6 +19,10 @@ const CourseList = ({ courses }) => {
               courseName={course.courseName}
               credits={course.credits}
               requirements={course.requirements}
+              hoveredCourseRequirements={hoveredCourseRequirements}
+              setHoveredCourseRequirements={setHoveredCourseRequirements}
+              hoveredCourseCode={hoveredCourseCode}
+              setHoveredCourseCode={setHoveredCourseCode}
             />
           ))}
         </div>

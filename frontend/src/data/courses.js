@@ -187,6 +187,38 @@ export const courses = [
   ],
   [
     {
+      code: "CINF105",
+      courseName: "Optimización",
+      credits: 3,
+      requirements: ["CINF101"],
+    },
+    {
+      code: "PTEC105",
+      courseName: "Ingeniería de software I",
+      credits: 4.5,
+      requirements: ["PTEC102"],
+    },
+    {
+      code: "ACAD103",
+      courseName: "Taller de innovación y emprendimiento III",
+      credits: 3,
+      requirements: ["ACAD102"],
+    },
+    {
+      code: "CINF104",
+      courseName: "Aprendizaje de maquina",
+      credits: 4.5,
+      requirements: ["CINF103"],
+    },
+    {
+      code: "ING249",
+      courseName: "Inglés IV",
+      credits: 4.5,
+      requirements: ["ING239"],
+    },
+  ],
+  [
+    {
       code: "TDFI106",
       courseName: "Gestión de la transformación digital",
       credits: 3,

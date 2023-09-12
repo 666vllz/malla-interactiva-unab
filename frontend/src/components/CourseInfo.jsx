@@ -8,10 +8,10 @@ import {
 } from "@/components/ui/dialog"
 import InfoIcon from "./InfoIcon"
 
-const CourseInfo = ({ title }) => {
+const CourseInfo = ({ title, className }) => {
   return (
     <Dialog>
-      <DialogTrigger>
+      <DialogTrigger className={className}>
         <InfoIcon />
       </DialogTrigger>
       <DialogContent>

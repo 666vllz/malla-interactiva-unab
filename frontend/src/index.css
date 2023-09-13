@@ -8,5 +8,8 @@ body {
 
 ::selection {
   background-color: rgb(255, 41, 191);
- 
+}
+
+.ScrolAreaViewport > div {
+  display: block !important ;
 }

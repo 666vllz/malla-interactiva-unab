@@ -17,9 +17,11 @@ import {
 import { useState } from "react"
 import { ScrollArea } from "@/components/ui/scroll-area"
 
-const ComboBox = ({ options }) => {
+const ComboBox = ({ options, defaultText, notFoundText }) => {
   const [open, setOpen] = useState(false)
   const [value, setValue] = useState("")
+
+  console.log(value)
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -30,23 +32,25 @@ const ComboBox = ({ options }) => {
           aria-expanded={open}
           className="w-[200px] justify-between bg-[#202020]"
         >
-          {value
-            ? options.find((option) => option.PROGRAMA === value)?.label
-            : "Select option..."}
+          <span className="truncate">
+            {value
+              ? options.find((option) => option.PROGRAMA === value)?.DESCRIPCION
+              : defaultText}
+          </span>
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0">
-        <Command className="display-none bg-[#202020]">
+        <Command className="display-none bg-[#202020] text-white">
           <CommandInput placeholder="Search option..." />
-          <CommandEmpty>No option found.</CommandEmpty>
-          <ScrollArea className="bg-h-72 border-none pr-2">
-            <CommandGroup className=" text-zinc-300">
+          <CommandEmpty>{notFoundText}</CommandEmpty>
+          <ScrollArea className="h-72 border-none pr-2">
+            <CommandGroup className="text-zinc-300">
               {options.map((option) => (
                 <CommandItem
                   key={option.PROGRAMA}
                   onSelect={(currentValue) => {
-                    setValue(currentValue === value ? "" : currentValue)
+                    setValue(currentValue === value ? "" : option.PROGRAMA)
                     setOpen(false)
                   }}
                 >
@@ -56,7 +60,7 @@ const ComboBox = ({ options }) => {
                       value === option.PROGRAMA ? "opacity-100" : "opacity-0"
                     )}
                   />
-                  {option.DESCRIPCION}
+                  <div className="w-full text-start">{option.DESCRIPCION}</div>
                 </CommandItem>
               ))}
             </CommandGroup>

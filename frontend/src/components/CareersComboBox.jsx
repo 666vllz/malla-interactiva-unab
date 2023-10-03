@@ -59,7 +59,9 @@ const CareersComboBox = ({ options, handleSelectedCareer }) => {
                       value === option.PROGRAMA ? "opacity-100" : "opacity-0"
                     )}
                   />
-                  <div className="w-full text-start">{option.DESCRIPCION}</div>
+                  <div className="w-full text-start">
+                    {option.DESCRIPCION} ({option.PROGRAMA})
+                  </div>
                 </CommandItem>
               ))}
             </CommandGroup>

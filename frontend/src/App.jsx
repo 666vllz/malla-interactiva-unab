@@ -32,7 +32,6 @@ function App() {
     for (let i = 0; i < courses.length; i++) {
       for (let j = 0; j < courses[i].length; j++) {
         if (courses[i][j].approved) {
-          console.log(true)
           updatedApprovedCourses.push(courses[i][j].id)
         }
       }
@@ -79,11 +78,28 @@ function App() {
     setCourses(updatedCourses)
   }
 
+  const clearApprovedCourses = () => {
+    const updateCourses = courses.map((semester) =>
+      semester.map((course) => ({ ...course, approved: false }))
+    )
+    console.log(updateCourses)
+    setCourses(updateCourses)
+    setApprovedCourses([])
+  }
+
   return (
     <div className="bg-[rgb(18,18,18)] font-inter text-gray-300">
       <Header />
       <main className="container max-w-fit overflow-x-auto">
-        <ProgressBar progress={courseProgress} />
+        <div className="flex gap-4 py-4">
+          <ProgressBar progress={courseProgress} />
+          <button
+            className="rounded border border-white/20 bg-[#202020] hover:bg-white hover:text-[#171717]"
+            onClick={clearApprovedCourses}
+          >
+            Limpiar cursos
+          </button>
+        </div>
         <CourseList courses={courses} handleCourseClick={handleCourseClick} />
       </main>
     </div>

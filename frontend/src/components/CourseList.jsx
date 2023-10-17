@@ -1,7 +1,8 @@
 import { useState } from "react"
 import CourseItem from "./CourseItem"
+import SemesterItem from "./SemesterItem"
 
-const CourseList = ({ courses, handleCourseClick }) => {
+const CourseList = ({ courses, handleCourseClick, handleSemesterClick }) => {
   const [hoveredCourseRequirements, setHoveredCourseRequirements] = useState([])
   const [hoveredCourseCode, setHoveredCourseCode] = useState(null)
 
@@ -9,9 +10,10 @@ const CourseList = ({ courses, handleCourseClick }) => {
     <div className="flex gap-2 text-xs">
       {courses.map((semester, index) => (
         <div key={index} className="inline-flex flex-col gap-2">
-          <h3 className="cursor-pointer rounded bg-[#202020] text-center hover:bg-[#303030]">
-            Semestre {index + 1}
-          </h3>
+          <SemesterItem
+            semesterIndex={index}
+            handleSemesterClick={handleSemesterClick}
+          />
           {semester.map((course) => (
             <CourseItem
               key={course.id}

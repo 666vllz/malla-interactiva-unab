@@ -55,7 +55,10 @@ const CourseItem = ({
           <CourseRequirements requirements={requirements} />
         </div>
       </div>
-      <CourseInfo title={courseName} className="absolute bottom-1 right-1" />
+      <CourseInfo
+        title={courseName}
+        className="absolute bottom-[6px] right-1"
+      />
     </div>
   )
 }

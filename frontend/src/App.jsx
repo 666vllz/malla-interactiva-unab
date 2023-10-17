@@ -3,6 +3,7 @@ import CourseList from "./components/CourseList"
 import Header from "./components/Header"
 import ProgressBar from "./components/ProgressBar"
 import { mockup } from "./data/mockup"
+import { Button } from "./components/ui/button"
 
 function App() {
   const [courses, setCourses] = useState(mockup)
@@ -57,7 +58,7 @@ function App() {
     const totalCourses = calculateTotalCourses()
     const progressValue = (approvedCourses.length / totalCourses) * 100
 
-    setCourseProgress(progressValue)
+    setCourseProgress(progressValue.toFixed(0))
   }, [approvedCourses])
 
   const handleCourseClick = (courseId) => {
@@ -87,20 +88,42 @@ function App() {
     setApprovedCourses([])
   }
 
+  const handleSemesterClick = (semesterIndex, approvedState) => {
+    const updateCourses = []
+
+    for (let i = 0; i < courses.length; i++) {
+      if (i === semesterIndex) {
+        const updateSemester = courses[i].map((course) => ({
+          ...course,
+          approved: approvedState,
+        }))
+        updateCourses.push(updateSemester)
+      } else {
+        updateCourses.push(courses[i])
+      }
+    }
+
+    setCourses(updateCourses)
+  }
+
   return (
-    <div className="bg-[rgb(18,18,18)] font-inter text-gray-300">
+    <div className="bg-[rgb(18,18,18)] font-inter text-gray-300 selection:bg-purple-800">
       <Header />
       <main className="container max-w-fit overflow-x-auto">
-        <div className="flex gap-4 py-4">
+        <div className="flex items-end gap-4 py-4">
           <ProgressBar progress={courseProgress} />
-          <button
-            className="rounded border border-white/20 bg-[#202020] hover:bg-white hover:text-[#171717]"
+          <Button
+            className="rounded border border-white/20 bg-[#202020] transition-all duration-200 ease-in-out hover:border-red-400 hover:bg-[#202020]"
             onClick={clearApprovedCourses}
           >
-            Limpiar cursos
-          </button>
+            Limpiar
+          </Button>
         </div>
-        <CourseList courses={courses} handleCourseClick={handleCourseClick} />
+        <CourseList
+          courses={courses}
+          handleCourseClick={handleCourseClick}
+          handleSemesterClick={handleSemesterClick}
+        />
       </main>
     </div>
   )

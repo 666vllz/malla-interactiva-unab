@@ -32,6 +32,7 @@ module.exports = {
       },
       fontFamily: {
         inter: ["Inter", "sans-serif"],
+        roboto: ["Roboto", "sans-serif"],
       },
     },
   },

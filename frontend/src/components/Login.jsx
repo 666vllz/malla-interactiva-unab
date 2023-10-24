@@ -11,8 +11,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 import { AlignJustify } from "lucide-react"
-import { Mail } from "lucide-react"
-import { ChevronLeft } from "lucide-react"
+// import { Mail } from "lucide-react"
 import { Loader2 } from "lucide-react"
 
 const Login = () => {

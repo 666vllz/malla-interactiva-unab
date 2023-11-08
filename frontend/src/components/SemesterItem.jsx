@@ -1,20 +1,13 @@
-import { useState } from "react"
-
 const SemesterItem = ({ semesterIndex, handleSemesterClick }) => {
-  const [isSemesterApproved, setIsSemesterApproved] = useState(false)
-
   const handleClick = () => {
-    const newSemesterState = !isSemesterApproved
-    handleSemesterClick(semesterIndex, newSemesterState)
-    setIsSemesterApproved(newSemesterState)
+    handleSemesterClick(semesterIndex)
   }
 
-  const className = `${
-    isSemesterApproved ? "border-green-300" : "border-white/20"
-  } border py-2 cursor-pointer select-none rounded bg-[#202020] text-center hover:bg-[#303030] `
-
   return (
-    <h3 onClick={handleClick} className={className}>
+    <h3
+      onClick={handleClick}
+      className="cursor-pointer select-none rounded border border-white/20 bg-[#202020] py-2 text-center hover:border-blue-400"
+    >
       Semestre {semesterIndex + 1}
     </h3>
   )

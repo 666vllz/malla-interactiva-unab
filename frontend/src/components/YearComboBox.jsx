@@ -28,12 +28,12 @@ const YearComboBox = ({ options, handleSelectedProgram }) => {
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-[200px] justify-between bg-[#202020]"
+          className="w-[200px] justify-between border-white/20 bg-[#202020] outline-none hover:border-blue-400 hover:bg-[#202020] hover:text-zinc-300 "
         >
           <span className="truncate">
             {value
               ? options.find((option) => option === value)
-              : "Seleccionar malla"}
+              : "Seleccionar cohorte"}
           </span>
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>

@@ -26,9 +26,9 @@ const CourseItem = ({
     setHoveredCourseCode(null)
   }
 
-  const prevRequirementStyle = `bg-[rgba(255,255,255,0.8)] text-[#121212] transition-all duration-300 ease-in-out`
+  const prevRequirementStyle = `bg-blue-400/80 transition-all duration-300 ease-in-out`
 
-  const nextRequirementStyles = `bg-[rgba(255,255,255,0.8)] text-[#121212] transition-all duration-300 ease-in-out`
+  const nextRequirementStyles = `bg-red-400/80 transition-all duration-300 ease-in-out`
 
   const className = `relative inline-block w-32 rounded border border-white bg-[#202020] hover:border-opacity-100 select-none ${
     approved ? " bg-green-300 text-black" : ""
@@ -49,7 +49,7 @@ const CourseItem = ({
         className="p-2"
       >
         <div className="h-14">
-          <h3 className="font-bold">{courseName}</h3>
+          <h3 className="break-words text-xs font-semibold">{courseName}</h3>
         </div>
         <div className="flex justify-between">
           <CourseRequirements requirements={requirements} />

@@ -28,7 +28,7 @@ const CareersComboBox = ({ options, handleSelectedCareer }) => {
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-[200px] justify-between bg-[#202020]"
+          className="w-[200px] justify-between border-white/20 bg-[#202020] outline-none hover:border-blue-400 hover:bg-[#202020] hover:text-zinc-300"
         >
           <span className="truncate">
             {value

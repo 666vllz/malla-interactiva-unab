@@ -2,29 +2,18 @@ import { useEffect, useState } from "react"
 import CourseList from "./components/CourseList"
 import Header from "./components/Header"
 import ProgressBar from "./components/ProgressBar"
-import { mockup } from "./data/mockup"
 import { Button } from "./components/ui/button"
 
 function App() {
-  const [courses, setCourses] = useState(mockup)
+  const [courses, setCourses] = useState([])
   const [approvedCourses, setApprovedCourses] = useState([])
   const [courseProgress, setCourseProgress] = useState(0)
 
   useEffect(() => {
-    const parsedApprovedCourses = JSON.parse(
-      localStorage.getItem("approvedCourses")
-    )
+    const parsedCourses = JSON.parse(localStorage.getItem("courses"))
 
-    if (parsedApprovedCourses) {
-      const updateCourses = courses.map((semester) =>
-        semester.map((course) =>
-          parsedApprovedCourses.includes(course.id)
-            ? { ...course, approved: true }
-            : course
-        )
-      )
-
-      setCourses(updateCourses)
+    if (parsedCourses) {
+      setCourses(parsedCourses)
     }
   }, [])
 
@@ -32,8 +21,8 @@ function App() {
     const updatedApprovedCourses = []
     for (let i = 0; i < courses.length; i++) {
       for (let j = 0; j < courses[i].length; j++) {
-        if (courses[i][j].approved) {
-          updatedApprovedCourses.push(courses[i][j].id)
+        if (courses[i][j].APPROVED) {
+          updatedApprovedCourses.push(courses[i][j].REGLA)
         }
       }
     }
@@ -43,6 +32,8 @@ function App() {
       "approvedCourses",
       JSON.stringify(updatedApprovedCourses)
     )
+
+    localStorage.setItem("courses", JSON.stringify(courses))
   }, [courses])
 
   useEffect(() => {
@@ -62,16 +53,10 @@ function App() {
   }, [approvedCourses])
 
   const handleCourseClick = (courseId) => {
-    // const updatedCourses = courses.map((course) =>
-    //   course.id === courseId
-    //     ? { ...course, approved: !course.approved }
-    //     : course
-    // )
-
     const updatedCourses = courses.map((semester) =>
       semester.map((course) =>
-        course.id === courseId
-          ? { ...course, approved: !course.approved }
+        course.REGLA === courseId
+          ? { ...course, APPROVED: !course.APPROVED }
           : course
       )
     )
@@ -81,21 +66,20 @@ function App() {
 
   const clearApprovedCourses = () => {
     const updateCourses = courses.map((semester) =>
-      semester.map((course) => ({ ...course, approved: false }))
+      semester.map((course) => ({ ...course, APPROVED: false }))
     )
-    console.log(updateCourses)
+
     setCourses(updateCourses)
-    setApprovedCourses([])
   }
 
-  const handleSemesterClick = (semesterIndex, approvedState) => {
+  const handleSemesterClick = (semesterIndex) => {
     const updateCourses = []
 
     for (let i = 0; i < courses.length; i++) {
       if (i === semesterIndex) {
         const updateSemester = courses[i].map((course) => ({
           ...course,
-          approved: approvedState,
+          APPROVED: !course.APPROVED,
         }))
         updateCourses.push(updateSemester)
       } else {
@@ -107,8 +91,8 @@ function App() {
   }
 
   return (
-    <div className="bg-[rgb(18,18,18)] font-inter text-gray-300 selection:bg-purple-800">
-      <Header />
+    <div className="font-inter bg-[rgb(18,18,18)] text-gray-300">
+      <Header setCourses={setCourses} />
       <main className="container max-w-fit overflow-x-auto">
         <div className="flex items-end gap-4 py-4">
           <ProgressBar progress={courseProgress} />

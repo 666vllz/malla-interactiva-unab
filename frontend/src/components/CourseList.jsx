@@ -16,13 +16,12 @@ const CourseList = ({ courses, handleCourseClick, handleSemesterClick }) => {
           />
           {semester.map((course) => (
             <CourseItem
-              key={course.id}
-              courseId={course.id}
-              code={course.code}
-              courseName={course.courseName}
-              credits={course.credits}
-              requirements={course.requirements}
-              approved={course.approved}
+              key={course.REGLA}
+              courseId={course.REGLA}
+              code={course.REGLA}
+              courseName={course.NOMBRE_REGLA}
+              requirements={course.PRERREQUISITOS}
+              approved={course.APPROVED}
               hoveredCourseRequirements={hoveredCourseRequirements}
               setHoveredCourseRequirements={setHoveredCourseRequirements}
               hoveredCourseCode={hoveredCourseCode}

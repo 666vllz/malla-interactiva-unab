@@ -3,6 +3,7 @@ import CourseList from "./components/CourseList"
 import Header from "./components/Header"
 import ProgressBar from "./components/ProgressBar"
 import { Button } from "./components/ui/button"
+import { ArcherContainer } from "react-archer"
 
 function App() {
   const [courses, setCourses] = useState([])
@@ -91,7 +92,7 @@ function App() {
   }
 
   return (
-    <div className="font-inter bg-[rgb(18,18,18)] text-gray-300">
+    <div className="bg-[rgb(18,18,18)] font-inter text-gray-300">
       <Header setCourses={setCourses} />
       <main className="container max-w-fit overflow-x-auto">
         <div className="flex items-end gap-4 py-4">
@@ -103,11 +104,17 @@ function App() {
             Limpiar
           </Button>
         </div>
-        <CourseList
-          courses={courses}
-          handleCourseClick={handleCourseClick}
-          handleSemesterClick={handleSemesterClick}
-        />
+        <ArcherContainer
+          endMarker={false}
+          svgContainerStyle={{ zIndex: 0 }}
+          lineStyle="angle"
+        >
+          <CourseList
+            courses={courses}
+            handleCourseClick={handleCourseClick}
+            handleSemesterClick={handleSemesterClick}
+          />
+        </ArcherContainer>
       </main>
     </div>
   )

@@ -3,8 +3,15 @@ import CourseItem from "./CourseItem"
 import SemesterItem from "./SemesterItem"
 
 const CourseList = ({ courses, handleCourseClick, handleSemesterClick }) => {
-  const [hoveredCourseRequirements, setHoveredCourseRequirements] = useState([])
-  const [hoveredCourseCode, setHoveredCourseCode] = useState(null)
+  const [hoveredCourse, setHoveredCourse] = useState(null)
+
+  const handleMouseOver = (course) => {
+    setHoveredCourse(course)
+  }
+
+  const handleMouseLeave = () => {
+    setHoveredCourse(null)
+  }
 
   return (
     <div className="flex gap-2 text-xs">
@@ -17,16 +24,11 @@ const CourseList = ({ courses, handleCourseClick, handleSemesterClick }) => {
           {semester.map((course) => (
             <CourseItem
               key={course.REGLA}
-              courseId={course.REGLA}
-              code={course.REGLA}
-              courseName={course.NOMBRE_REGLA}
-              requirements={course.PRERREQUISITOS}
-              approved={course.APPROVED}
-              hoveredCourseRequirements={hoveredCourseRequirements}
-              setHoveredCourseRequirements={setHoveredCourseRequirements}
-              hoveredCourseCode={hoveredCourseCode}
-              setHoveredCourseCode={setHoveredCourseCode}
+              course={course}
               handleClick={handleCourseClick}
+              handleMouseOver={handleMouseOver}
+              handleMouseLeave={handleMouseLeave}
+              hoveredCourse={hoveredCourse}
             />
           ))}
         </div>

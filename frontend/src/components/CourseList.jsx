@@ -14,9 +14,9 @@ const CourseList = ({ courses, handleCourseClick, handleSemesterClick }) => {
   }
 
   return (
-    <div className="flex gap-2 text-xs">
+    <div className="flex gap-6 text-xs">
       {courses.map((semester, index) => (
-        <div key={index} className="inline-flex flex-col gap-2">
+        <div key={index} className="inline-flex flex-col gap-6">
           <SemesterItem
             semesterIndex={index}
             handleSemesterClick={handleSemesterClick}
@@ -25,9 +25,9 @@ const CourseList = ({ courses, handleCourseClick, handleSemesterClick }) => {
             <CourseItem
               key={course.REGLA}
               course={course}
-              handleClick={handleCourseClick}
-              handleMouseOver={handleMouseOver}
-              handleMouseLeave={handleMouseLeave}
+              onClick={handleCourseClick}
+              onMouseOver={handleMouseOver}
+              onMouseLeave={handleMouseLeave}
               hoveredCourse={hoveredCourse}
             />
           ))}

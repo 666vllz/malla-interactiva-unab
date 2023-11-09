@@ -29,9 +29,9 @@ const CourseItem = ({
   const isPartOfHover =
     isRequirement || isEnabling ? "opacity-100" : "opacity-20"
 
-  const opacity = hoveredCourse ? isPartOfHover : "opacity-100"
+  const opacity = hoveredCourse && isPartOfHover
 
-  const className = `${bgColor} ${opacity} transition-all ease-in-out duration-100 relative inline-block w-32 rounded border border-white/20 bg-[#202020] hover:border-opacity-100 select-none hover:bg-[#333333] hover:opacity-100`
+  const className = `${bgColor} ${opacity} transition-all ease-in-out duration-100 relative inline-block w-32 rounded border border-white/20 bg-[#202020] select-none hover:bg-[#333333] hover:opacity-100 hover:border-blue-400`
 
   return (
     <div className={className}>

@@ -2,49 +2,42 @@ import CourseInfo from "./CourseInfo"
 import CourseRequirements from "./CourseRequirements"
 
 const CourseItem = ({
-  courseId,
-  code,
-  courseName,
-  requirements,
-  approved,
-  hoveredCourseRequirements,
-  setHoveredCourseRequirements,
-  hoveredCourseCode,
-  setHoveredCourseCode,
+  course,
   handleClick,
+  handleMouseOver,
+  handleMouseLeave,
+  hoveredCourse,
 }) => {
-  const isPrevRequirement = hoveredCourseRequirements.includes(code)
-  const isNextRequirement = requirements.includes(hoveredCourseCode)
+  const courseCode = course.REGLA
+  const courseName = course.NOMBRE_REGLA
+  const requirements = course.PRERREQUISITOS
+  const isApproved = course.APPROVED
 
-  const handleMouseOver = () => {
-    setHoveredCourseRequirements(requirements)
-    setHoveredCourseCode(code)
-  }
+  const isRequirement =
+    hoveredCourse && hoveredCourse.PRERREQUISITOS.includes(courseCode)
+  const isEnabling =
+    hoveredCourse && hoveredCourse.ENABLING.includes(courseCode)
 
-  const handleMouseLeave = () => {
-    setHoveredCourseRequirements([])
-    setHoveredCourseCode(null)
-  }
+  const bgColor = isApproved
+    ? "bg-green-400/60"
+    : isRequirement
+    ? "bg-blue-600/60"
+    : isEnabling
+    ? "bg-red-600/60"
+    : "bg-neutral-900"
 
-  const prevRequirementStyle = `bg-blue-400/80 transition-all duration-300 ease-in-out`
+  const isPartOfHover =
+    isRequirement || isEnabling ? "opacity-100" : "opacity-20"
 
-  const nextRequirementStyles = `bg-red-400/80 transition-all duration-300 ease-in-out`
+  const opacity = hoveredCourse ? isPartOfHover : "opacity-100"
 
-  const className = `relative inline-block w-32 rounded border border-white bg-[#202020] hover:border-opacity-100 select-none ${
-    approved ? " bg-green-300 text-black" : ""
-  } ${
-    isPrevRequirement
-      ? prevRequirementStyle
-      : isNextRequirement
-      ? nextRequirementStyles
-      : "border-opacity-20"
-  }`
+  const className = `${bgColor} ${opacity} transition-all ease-in-out duration-100 relative inline-block w-32 rounded border border-white/20 bg-[#202020] hover:border-opacity-100 select-none hover:bg-[#333333] hover:opacity-100`
 
   return (
     <div className={className}>
       <div
-        onClick={() => handleClick(courseId)}
-        onMouseOver={handleMouseOver}
+        onClick={() => handleClick(courseCode)}
+        onMouseOver={() => handleMouseOver(course)}
         onMouseLeave={handleMouseLeave}
         className="p-2"
       >

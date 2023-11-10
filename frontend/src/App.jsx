@@ -91,8 +91,6 @@ function App() {
     setCourses(updateCourses)
   }
 
-  console.log(courseProgress)
-
   return (
     <div className="font-roboto bg-white text-black">
       <Header setCourses={setCourses} />

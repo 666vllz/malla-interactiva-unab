@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import CareersComboBox from "./CareersComboBox"
 import YearComboBox from "./YearComboBox"
+import LogoUnab from "./LogoUnab"
 
 const Header = ({ setCourses }) => {
   const [careers, setCareers] = useState([])
@@ -79,7 +80,11 @@ const Header = ({ setCourses }) => {
   return (
     <header className="w-full border-b py-2">
       <div className="container flex h-12 items-center justify-between">
-        <h2 className="text-2xl font-bold">Malla interactiva</h2>
+        <div className="flex items-center justify-center">
+          <LogoUnab />
+          <h2 className="text-2xl font-bold">Malla interactiva</h2>
+        </div>
+
         <div className="flex gap-4">
           {careers.length === 0 ? (
             <div className="flex w-[200px] items-center justify-center rounded border border-black/20 bg-white">

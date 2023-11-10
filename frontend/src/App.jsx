@@ -91,18 +91,24 @@ function App() {
     setCourses(updateCourses)
   }
 
+  console.log(courseProgress)
+
   return (
-    <div className="bg-white font-roboto text-black">
+    <div className="font-roboto bg-white text-black">
       <Header setCourses={setCourses} />
       <main className="container max-w-fit overflow-x-auto">
         <div className="flex items-end gap-4 py-4">
-          <ProgressBar progress={courseProgress} />
-          <Button
-            className="rounded border border-[#A90429] bg-[#A90429]/80 transition-all duration-200 ease-in-out hover:bg-[#A90429]"
-            onClick={clearApprovedCourses}
-          >
-            Limpiar
-          </Button>
+          {isNaN(courseProgress) ? null : (
+            <>
+              <ProgressBar progress={courseProgress} />
+              <Button
+                className="rounded border border-[#A90429] bg-[#A90429]/80 transition-all duration-200 ease-in-out hover:bg-[#A90429]"
+                onClick={clearApprovedCourses}
+              >
+                Limpiar
+              </Button>
+            </>
+          )}
         </div>
         <ArcherContainer
           endMarker={false}

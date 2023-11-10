@@ -12,6 +12,12 @@ const CourseItem = ({
 }) => {
   const [isHovered, setIsHovered] = useState(false)
 
+  const courseCode = course.REGLA
+  const courseName = course.NOMBRE_REGLA
+  const requirements = course.PRERREQUISITOS
+  const enablings = course.ENABLING
+  const isApproved = course.APPROVED
+
   const handleMouseOver = () => {
     onMouseOver(course)
     setIsHovered(true)
@@ -21,12 +27,6 @@ const CourseItem = ({
     onMouseLeave()
     setIsHovered(false)
   }
-
-  const courseCode = course.REGLA
-  const courseName = course.NOMBRE_REGLA
-  const requirements = course.PRERREQUISITOS
-  const enablings = course.ENABLING
-  const isApproved = course.APPROVED
 
   const isRequirement =
     hoveredCourse && hoveredCourse.PRERREQUISITOS.includes(courseCode)
@@ -50,6 +50,22 @@ const CourseItem = ({
 
   const getRelations = () => {
     const relations = []
+
+    requirements.forEach((requirementCode) => {
+      const newRelationObj = {
+        targetId: requirementCode,
+        targetAnchor: "right",
+        sourceAnchor: "left",
+        style: {
+          strokeColor: "black",
+          strokeWidth: 1,
+        },
+        className: isHovered ? "opacity-100" : "opacity-0",
+      }
+
+      relations.push(newRelationObj)
+    })
+
     enablings.forEach((enabledCode) => {
       const newRelationObj = {
         targetId: enabledCode,

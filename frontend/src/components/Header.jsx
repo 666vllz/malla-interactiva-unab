@@ -79,10 +79,10 @@ const Header = ({ setCourses }) => {
   return (
     <header className="w-full border-b py-2">
       <div className="container flex h-12 items-center justify-between">
-        <h2 className="font-bold">Malla interactiva</h2>
+        <h2 className="text-2xl font-bold">Malla interactiva</h2>
         <div className="flex gap-4">
           {careers.length === 0 ? (
-            <div className="flex w-[200px] items-center justify-center rounded border border-white/20 bg-[#202020]">
+            <div className="flex w-[200px] items-center justify-center rounded border border-black/20 bg-white">
               <div role="status">
                 <svg
                   aria-hidden="true"
@@ -116,7 +116,7 @@ const Header = ({ setCourses }) => {
             handleSelectedProgram={handleSelectedProgram}
           />
           <button
-            className="rounded border border-white/20 bg-[#202020] px-4 outline-none hover:border-blue-400 focus:border-blue-400"
+            className="rounded border border-black/20 bg-white px-4 outline-none hover:border-blue-400 focus:border-blue-400"
             onClick={handleClick}
             disabled={!(selectedCareer && selectedProgram)}
           >

@@ -92,13 +92,13 @@ function App() {
   }
 
   return (
-    <div className="bg-[rgb(18,18,18)] font-inter text-gray-300">
+    <div className="bg-white font-roboto text-black">
       <Header setCourses={setCourses} />
       <main className="container max-w-fit overflow-x-auto">
         <div className="flex items-end gap-4 py-4">
           <ProgressBar progress={courseProgress} />
           <Button
-            className="rounded border border-white/20 bg-[#202020] transition-all duration-200 ease-in-out hover:border-red-400 hover:bg-[#202020]"
+            className="rounded border border-[#A90429] bg-[#A90429]/80 transition-all duration-200 ease-in-out hover:bg-[#A90429]"
             onClick={clearApprovedCourses}
           >
             Limpiar

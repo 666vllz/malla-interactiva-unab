@@ -28,7 +28,7 @@ const YearComboBox = ({ options, handleSelectedProgram }) => {
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-[200px] justify-between border-white/20 bg-[#202020] outline-none hover:border-blue-400 hover:bg-[#202020] hover:text-zinc-300 "
+          className="w-[200px] justify-between border-black/20 bg-white text-black outline-none hover:border-blue-400 hover:bg-white hover:text-black"
         >
           <span className="truncate">
             {value
@@ -39,11 +39,11 @@ const YearComboBox = ({ options, handleSelectedProgram }) => {
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0">
-        <Command className="display-none bg-[#202020] text-white">
+        <Command className="display-none bg-white text-black">
           <CommandInput placeholder="Buscar malla..." />
           <CommandEmpty>Malla no encontrada</CommandEmpty>
           <ScrollArea className="h-72 border-none pr-2">
-            <CommandGroup className="text-zinc-300">
+            <CommandGroup className="text-black">
               {options.map((option) => (
                 <CommandItem
                   key={option}

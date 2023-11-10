@@ -36,17 +36,17 @@ const CourseItem = ({
   const bgColor = isApproved
     ? "bg-green-800"
     : isRequirement
-    ? "bg-blue-800"
+    ? "bg-[#A90429]"
     : isEnabling
-    ? "bg-red-800"
-    : "bg-neutral-900"
+    ? "bg-[#A90429]"
+    : "bg-[#03102C]"
 
   const isPartOfHover =
-    isRequirement || isEnabling ? "opacity-100" : "opacity-10"
+    isRequirement || isEnabling ? "opacity-100" : "opacity-30"
 
   const opacity = hoveredCourse && isPartOfHover
 
-  const className = `${bgColor} ${opacity} z-10 transition-all ease-in-out duration-100 relative inline-block w-32 rounded border border-white/20 bg-[#202020] select-none hover:opacity-100 hover:border-blue-400`
+  const className = `${bgColor} ${opacity} text-white z-10 transition-all ease-in-out duration-100 relative inline-block w-32 rounded border border-black/20 select-none hover:opacity-100 hover:border-blue-400`
 
   const getRelations = () => {
     const relations = []
@@ -56,7 +56,7 @@ const CourseItem = ({
         targetAnchor: "left",
         sourceAnchor: "right",
         style: {
-          strokeColor: "white",
+          strokeColor: "black",
           strokeWidth: 1,
         },
         className: isHovered ? "opacity-100" : "opacity-0",
@@ -73,15 +73,22 @@ const CourseItem = ({
       <div className={className}>
         <div
           onClick={() => onClick(courseCode)}
-          onMouseOver={handleMouseOver}
-          onMouseLeave={handleMouseLeave}
+          // onMouseOver={handleMouseOver}
+          // onMouseLeave={handleMouseLeave}
           className="p-2"
         >
           <div className="h-14">
             <h3 className="break-words text-xs font-semibold">{courseName}</h3>
           </div>
           <div className="flex justify-between">
-            <CourseRequirements requirements={requirements} />
+            <div
+              onMouseOver={handleMouseOver}
+              onMouseLeave={handleMouseLeave}
+              className="rounded border border-white px-4"
+            >
+              Requisitos
+            </div>
+            {/* <CourseRequirements requirements={requirements} /> */}
           </div>
         </div>
         <CourseInfo

@@ -41,7 +41,9 @@ const Header = ({ setCourses }) => {
     const career = careers.filter((career) => career.PROGRAMA === careerCode)
 
     setSelectedCareer(career[0].PROGRAMA)
-    setProgramOptions(career[0].PERIODOS)
+
+    const sortedProgramOptions = career[0].PERIODOS.toSorted().reverse()
+    setProgramOptions(sortedProgramOptions)
   }
 
   const handleSelectedProgram = (programCode) => {

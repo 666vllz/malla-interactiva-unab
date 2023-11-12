@@ -1,6 +1,5 @@
 import { useState } from "react"
 import CourseInfo from "./CourseInfo"
-import CourseRequirements from "./CourseRequirements"
 import { ArcherElement } from "react-archer"
 
 const CourseItem = ({
@@ -18,7 +17,7 @@ const CourseItem = ({
   const enablings = course.ENABLING
   const isApproved = course.APPROVED
 
-  const handleMouseOver = () => {
+  const handleMouseEnter = () => {
     onMouseOver(course)
     setIsHovered(true)
   }
@@ -51,20 +50,20 @@ const CourseItem = ({
   const getRelations = () => {
     const relations = []
 
-    requirements.forEach((requirementCode) => {
-      const newRelationObj = {
-        targetId: requirementCode,
-        targetAnchor: "right",
-        sourceAnchor: "left",
-        style: {
-          strokeColor: "black",
-          strokeWidth: 1,
-        },
-        className: isHovered ? "opacity-100" : "opacity-0",
-      }
+    // requirements.forEach((requirementCode) => {
+    //   const newRelationObj = {
+    //     targetId: requirementCode,
+    //     targetAnchor: "right",
+    //     sourceAnchor: "left",
+    //     style: {
+    //       strokeColor: "black",
+    //       strokeWidth: 1,
+    //     },
+    //     className: isHovered ? "opacity-100" : "opacity-0",
+    //   }
 
-      relations.push(newRelationObj)
-    })
+    //   relations.push(newRelationObj)
+    // })
 
     enablings.forEach((enabledCode) => {
       const newRelationObj = {
@@ -98,7 +97,7 @@ const CourseItem = ({
           </div>
           <div className="flex justify-between">
             <div
-              onMouseOver={handleMouseOver}
+              onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
               className="rounded border border-white px-4"
             >

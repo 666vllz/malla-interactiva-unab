@@ -8,7 +8,13 @@ import {
 } from "@/components/ui/dialog"
 import InfoIcon from "./InfoIcon"
 
-const CourseInfo = ({ title, className }) => {
+const CourseInfo = ({
+  title,
+  className,
+  description,
+  requirements,
+  enablings,
+}) => {
   return (
     <Dialog>
       <DialogTrigger className={className}>
@@ -16,12 +22,11 @@ const CourseInfo = ({ title, className }) => {
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>{title}</DialogTitle>
+          <DialogTitle className="mb-2 text-2xl">{title}</DialogTitle>
           <DialogDescription>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum rem
-            voluptas perspiciatis aliquam mollitia? In fugit autem obcaecati
-            nisi perferendis, dignissimos cupiditate inventore cumque architecto
-            quos. Laudantium velit molestias facere?
+            {description ? description : "No tiene descripción"}
+
+            <div className="relative overflow-x-auto"></div>
           </DialogDescription>
         </DialogHeader>
       </DialogContent>

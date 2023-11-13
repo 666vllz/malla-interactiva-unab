@@ -21,8 +21,6 @@ const ComboBox = ({ options, defaultText, notFoundText }) => {
   const [open, setOpen] = useState(false)
   const [value, setValue] = useState("")
 
-  console.log(value)
-
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
@@ -30,7 +28,7 @@ const ComboBox = ({ options, defaultText, notFoundText }) => {
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-[200px] justify-between bg-[#202020]"
+          className="w-[200px] justify-between"
         >
           <span className="truncate">
             {value

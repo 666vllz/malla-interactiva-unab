@@ -80,7 +80,7 @@ const Header = ({ setCourses }) => {
   }
 
   return (
-    <header className="w-full border-b py-2">
+    <header className="w-full border-b-[20px] border-[#A90429] py-2">
       <div className="container flex h-12 items-center justify-between">
         <div className="flex items-center justify-center">
           <LogoUnab />

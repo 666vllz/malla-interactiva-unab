@@ -4,6 +4,7 @@ import Header from "./components/Header"
 import ProgressBar from "./components/ProgressBar"
 import { Button } from "./components/ui/button"
 import { ArcherContainer } from "react-archer"
+import Footer from "./components/Footer"
 
 function App() {
   const [courses, setCourses] = useState([])
@@ -92,7 +93,7 @@ function App() {
   }
 
   return (
-    <div className="font-roboto bg-white text-black">
+    <div className="bg-white font-roboto text-black">
       <Header setCourses={setCourses} />
       <main className="container max-w-fit overflow-x-auto">
         <div className="flex items-end gap-4 py-4">
@@ -120,6 +121,13 @@ function App() {
           />
         </ArcherContainer>
       </main>
+      {courses.length === 0 ? (
+        <div className="absolute bottom-0 left-0 right-0">
+          <Footer />
+        </div>
+      ) : (
+        <Footer />
+      )}
     </div>
   )
 }

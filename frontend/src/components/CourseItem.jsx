@@ -19,7 +19,7 @@ const CourseItem = ({
   const enablings = course.ENABLING
   const isApproved = course.APPROVED
 
-  const handleMouseOver = () => {
+  const handleMouseEnter = () => {
     onMouseOver(course)
     setIsHovered(true)
   }
@@ -109,7 +109,7 @@ const CourseItem = ({
           </div>
           <div className="flex justify-between">
             <div
-              onMouseOver={handleMouseOver}
+              onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
               className="rounded border border-white px-4"
             >
